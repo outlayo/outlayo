@@ -501,6 +501,23 @@ await openai.responses.create({
         </aside>
       </section>
 
+      <section class="install-demo fade-up delay-2">
+        <div>
+          <span class="demo-label">Instrument in minutes</span>
+          <h3>Show teams how little code it takes.</h3>
+          <p>Add the ingest SDK, pass its tracked fetch into the client you already use, and start emitting usage events before you wire up any vendor reconciliation.</p>
+          <div class="demo-steps">
+            <div class="demo-step"><strong>1.</strong> Install <code>@outlayo/sdk-ingest</code> and add the OpenAI preset.</div>
+            <div class="demo-step"><strong>2.</strong> Hand Outlayo's tracked <code>fetch</code> to your OpenAI client.</div>
+            <div class="demo-step"><strong>3.</strong> Emit usage events to your Outlayo collector while connector reconciliation catches up later.</div>
+          </div>
+        </div>
+        <div class="demo-code">
+          <span class="demo-label">Example</span>
+          <pre><code>{instrumentationSnippet}</code></pre>
+        </div>
+      </section>
+
       <section class="cards fade-up delay-2">
         <article class="card">
           <p class="kicker">Differentiator</p>
@@ -536,23 +553,6 @@ await openai.responses.create({
           <div class="pill"><strong>Hosted app:</strong> managed service access at app.outlayo.com</div>
           <div class="pill"><strong>Public code:</strong> transparent runtime and integration logic</div>
           <div class="pill"><strong>Private ops:</strong> secrets, production infra state, abuse controls, tenant operations</div>
-        </div>
-      </section>
-
-      <section class="install-demo fade-up delay-2">
-        <div>
-          <span class="demo-label">Instrument in minutes</span>
-          <h3>Show teams how little code it takes.</h3>
-          <p>Add the ingest SDK, pass its tracked fetch into the client you already use, and start emitting usage events before you wire up any vendor reconciliation.</p>
-          <div class="demo-steps">
-            <div class="demo-step"><strong>1.</strong> Install <code>@outlayo/sdk-ingest</code> and add the OpenAI preset.</div>
-            <div class="demo-step"><strong>2.</strong> Hand Outlayo's tracked <code>fetch</code> to your OpenAI client.</div>
-            <div class="demo-step"><strong>3.</strong> Emit usage events to your Outlayo collector while connector reconciliation catches up later.</div>
-          </div>
-        </div>
-        <div class="demo-code">
-          <span class="demo-label">Example</span>
-          <pre><code>{instrumentationSnippet}</code></pre>
         </div>
       </section>
 
