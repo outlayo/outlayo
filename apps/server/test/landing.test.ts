@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { SQLiteStore } from "@outlayo/store-sqlite";
 import { createApp } from "../src/app.js";
 
-describe("landing page", () => {
+describe("landing page migration", () => {
   const stores: SQLiteStore[] = [];
 
   afterEach(async () => {
@@ -12,7 +12,7 @@ describe("landing page", () => {
     }
   });
 
-  it("renders marketing route with core messaging and CTA", async () => {
+  it("does not serve the legacy marketing route from the server app", async () => {
     const store = new SQLiteStore(":memory:");
     stores.push(store);
     await store.migrate();
@@ -26,10 +26,6 @@ describe("landing page", () => {
     });
 
     const response = await request(app).get("/landing");
-    expect(response.status).toBe(200);
-    expect(response.text).toContain("Stop surprise usage bills before they hit your runway.");
-    expect(response.text).toContain("Request early access");
-    expect(response.text).toContain("Explore the OSS repo");
-    expect(response.text).toContain("github.com/outlayo/outlayo");
+    expect(response.status).toBe(404);
   });
 });

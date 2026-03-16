@@ -42,6 +42,9 @@ jobs:
         run: npm ci
 
       - name: Build website
+        env:
+          WEBSITE_SITE_URL: https://outlayo.github.io
+          WEBSITE_BASE_PATH: /
         run: npm run website:build
 
       - name: Upload Pages artifact
