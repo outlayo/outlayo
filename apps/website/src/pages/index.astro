@@ -1,0 +1,570 @@
+---
+const generatedAt = new Date().toISOString();
+const instrumentationSnippet = `npm install @outlayo/sdk-ingest openai
+
+import OpenAI from "openai";
+import { setupPresetFetch } from "@outlayo/sdk-ingest";
+
+const outlayo = setupPresetFetch({
+  presets: [{ name: "openai" }]
+});
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+  fetch: outlayo.fetch
+});
+
+await openai.responses.create({
+  model: "gpt-4o-mini",
+  input: "Draft a refund response for this ticket"
+});`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Outlayo | Usage-Based Spend Control</title>
+    <meta
+      name="description"
+      content="Outlayo helps teams intercept usage, understand spend, and catch surprise bills before they hit runway."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #12263a;
+        --muted: #50657a;
+        --surface: #fffdf8;
+        --sand: #f4efe3;
+        --accent: #0f766e;
+        --accent-strong: #0d5f5a;
+        --ring: rgba(15, 118, 110, 0.24);
+        --shadow: 0 18px 45px rgba(18, 38, 58, 0.14);
+        --font-body: "Space Grotesk", "Trebuchet MS", "Segoe UI", sans-serif;
+        --font-display: "Fraunces", Georgia, serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 18%, rgba(15, 118, 110, 0.2), transparent 42%),
+          radial-gradient(circle at 88% 24%, rgba(14, 116, 144, 0.18), transparent 36%),
+          linear-gradient(160deg, #fffdf8 0%, #f6f1e6 48%, #e9f8f4 100%);
+        min-height: 100vh;
+      }
+
+      .landing-shell {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 22px 18px 40px;
+      }
+
+      .fade-up {
+        animation: fadeUp 500ms ease-out both;
+      }
+
+      .fade-up.delay-1 {
+        animation-delay: 120ms;
+      }
+
+      .fade-up.delay-2 {
+        animation-delay: 220ms;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(8px);
+        border-radius: 999px;
+        padding: 10px 12px 10px 16px;
+        box-shadow: 0 10px 30px rgba(18, 38, 58, 0.08);
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .topbar-actions {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+      }
+
+      .cta-btn.primary {
+        background: linear-gradient(135deg, var(--accent) 0%, #0a8794 100%);
+        color: #ffffff;
+        box-shadow: 0 12px 28px rgba(15, 118, 110, 0.32);
+      }
+
+      .cta-btn.secondary {
+        border-color: rgba(18, 38, 58, 0.18);
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.84);
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero {
+        margin-top: 18px;
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        background: linear-gradient(140deg, rgba(255, 255, 255, 0.88), rgba(234, 251, 246, 0.82));
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 30px;
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 1.25fr 0.95fr;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        right: -60px;
+        top: -60px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(14, 116, 144, 0.22), transparent 72%);
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent-strong);
+      }
+
+      .hero h1 {
+        margin-top: 10px;
+        margin-bottom: 0;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4.6vw, 3.4rem);
+        line-height: 1.05;
+      }
+
+      .hero p {
+        margin-top: 14px;
+        color: var(--muted);
+        max-width: 45ch;
+        font-size: 1.05rem;
+      }
+
+      .button-row {
+        margin-top: 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .hero-note {
+        margin-top: 14px;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+
+      .signal-card {
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.82);
+        padding: 16px;
+        z-index: 1;
+      }
+
+      .signal-card h2 {
+        margin: 0;
+        font-size: 0.96rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #335067;
+      }
+
+      .signal-list {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .signal-item {
+        border-radius: 12px;
+        background: var(--surface);
+        border: 1px solid rgba(18, 38, 58, 0.1);
+        padding: 10px 12px;
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+
+      .signal-item strong {
+        color: var(--accent-strong);
+      }
+
+      .cards {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        border-radius: 20px;
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 8px 24px rgba(18, 38, 58, 0.08);
+        padding: 18px;
+      }
+
+      .card .kicker {
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #335067;
+      }
+
+      .card h3 {
+        margin-top: 6px;
+        margin-bottom: 0;
+        font-size: 1.06rem;
+        font-weight: 700;
+      }
+
+      .card p {
+        margin-top: 6px;
+        font-size: 0.94rem;
+        color: var(--muted);
+      }
+
+      .proof {
+        margin-top: 18px;
+        border-radius: 20px;
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        background: rgba(255, 255, 255, 0.9);
+        padding: 20px;
+        box-shadow: 0 8px 24px rgba(18, 38, 58, 0.08);
+      }
+
+      .proof h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .proof-grid {
+        margin-top: 12px;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pill {
+        border-radius: 12px;
+        background: linear-gradient(160deg, #ffffff, #f6fbfa);
+        border: 1px solid rgba(18, 38, 58, 0.1);
+        padding: 11px 12px;
+        font-size: 0.9rem;
+        color: #27445a;
+      }
+
+      .install-demo {
+        margin-top: 18px;
+        border-radius: 22px;
+        border: 1px solid rgba(18, 38, 58, 0.12);
+        background: linear-gradient(145deg, rgba(18, 38, 58, 0.96), rgba(16, 30, 45, 0.94));
+        color: #eef7f5;
+        padding: 22px;
+        box-shadow: 0 12px 28px rgba(18, 38, 58, 0.16);
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 18px;
+      }
+
+      .install-demo h3 {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+
+      .install-demo p {
+        margin-top: 8px;
+        color: rgba(238, 247, 245, 0.76);
+        font-size: 0.95rem;
+        max-width: 36ch;
+      }
+
+      .demo-steps {
+        margin-top: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .demo-step {
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px 12px;
+        font-size: 0.88rem;
+        color: rgba(238, 247, 245, 0.9);
+      }
+
+      .demo-step code,
+      .demo-code code {
+        font-family: "SFMono-Regular", "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
+      }
+
+      .demo-code {
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(6, 14, 23, 0.72);
+        padding: 14px;
+        overflow-x: auto;
+      }
+
+      .demo-code pre {
+        margin: 0;
+        font-family: "SFMono-Regular", "SF Mono", Monaco, Consolas, "Liberation Mono", monospace;
+        font-size: 0.84rem;
+        line-height: 1.55;
+        color: #d9fbf1;
+        white-space: pre;
+      }
+
+      .demo-label {
+        display: inline-block;
+        margin-bottom: 10px;
+        border-radius: 999px;
+        background: rgba(15, 118, 110, 0.18);
+        border: 1px solid rgba(94, 234, 212, 0.2);
+        color: #9ef3dd;
+        font-size: 0.74rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 5px 9px;
+      }
+
+      .final-cta {
+        margin-top: 18px;
+        border-radius: 22px;
+        border: 1px solid var(--ring);
+        background: linear-gradient(140deg, rgba(15, 118, 110, 0.12), rgba(14, 116, 144, 0.1));
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .final-cta h4 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+      }
+
+      .final-cta p {
+        margin-top: 4px;
+        color: #315167;
+        font-size: 0.95rem;
+      }
+
+      .footer-note {
+        margin-top: 16px;
+        text-align: center;
+        font-size: 0.78rem;
+        color: #486276;
+      }
+
+      @media (max-width: 960px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .cards {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .landing-shell {
+          padding: 16px 14px 28px;
+        }
+
+        .hero {
+          padding: 20px;
+          border-radius: 24px;
+        }
+
+        .cards,
+        .proof-grid,
+        .install-demo {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          border-radius: 18px;
+        }
+
+        .final-cta {
+          padding: 18px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .fade-up {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="landing-shell">
+      <header class="topbar fade-up">
+        <div class="brand">Outlayo</div>
+        <div class="topbar-actions">
+          <a href="https://github.com/outlayo/outlayo" class="cta-btn secondary">Explore OSS</a>
+          <a href="mailto:founders@outlayo.com?subject=Outlayo%20early%20access" class="cta-btn primary">Request access</a>
+        </div>
+      </header>
+
+      <section class="hero fade-up delay-1">
+        <div>
+          <p class="eyebrow">Usage-based spend control</p>
+          <h1>Stop surprise usage bills before they hit your runway.</h1>
+          <p>
+            Outlayo intercepts app-side API usage, turns it into spend signals, and reconciles it with vendor data where trustworthy billing feeds exist.
+          </p>
+          <div class="button-row">
+            <a id="early-access" href="mailto:founders@outlayo.com?subject=Outlayo%20early%20access" class="cta-btn primary">Request early access</a>
+            <a href="https://github.com/outlayo/outlayo" class="cta-btn secondary">Explore the OSS repo</a>
+          </div>
+          <p class="hero-note">
+            Built for startup founders, indie hackers, and infra-minded teams running OpenAI, cloud infra, and usage-priced APIs without a single source of truth.
+          </p>
+        </div>
+
+        <aside class="signal-card">
+          <h2>Signal Confidence</h2>
+          <div class="signal-list">
+            <div class="signal-item"><span>App-side usage interception</span><strong>Primary</strong></div>
+            <div class="signal-item"><span>Authoritative vendor feeds</span><strong>Reconcile</strong></div>
+            <div class="signal-item"><span>Confidence-aware spend model</span><strong>Tracked</strong></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="cards fade-up delay-2">
+        <article class="card">
+          <p class="kicker">Differentiator</p>
+          <h3>Coverage without waiting on vendors</h3>
+          <p>Intercept real application traffic first, so weak billing APIs do not block visibility.</p>
+        </article>
+        <article class="card">
+          <p class="kicker">Reconciliation</p>
+          <h3>Authoritative where possible</h3>
+          <p>Pull vendor telemetry where reliable feeds exist to reconcile estimates against stronger signals.</p>
+        </article>
+        <article class="card">
+          <p class="kicker">Action</p>
+          <h3>Alert before margin slips</h3>
+          <p>Forecast budget and free-tier breaches, then push webhook alerts before invoices turn into surprises.</p>
+        </article>
+      </section>
+
+      <section class="proof fade-up delay-2">
+        <h3>Why technical teams switch</h3>
+        <div class="proof-grid">
+          <div class="pill">One model for live usage, spend, and confidence</div>
+          <div class="pill">Ingest-first coverage for real-world vendor gaps</div>
+          <div class="pill">Preset extractors plus connector reconciliation</div>
+          <div class="pill">Built-in export, dashboarding, and webhook automation</div>
+        </div>
+      </section>
+
+      <section id="oss" class="proof fade-up delay-2">
+        <h3>Open Source + Hosted, clearly separated</h3>
+        <div class="proof-grid">
+          <div class="pill"><strong>OSS repo:</strong> connectors, core packages, docs, and contributor workflows</div>
+          <div class="pill"><strong>Hosted app:</strong> managed service access at app.outlayo.com</div>
+          <div class="pill"><strong>Public code:</strong> transparent runtime and integration logic</div>
+          <div class="pill"><strong>Private ops:</strong> secrets, production infra state, abuse controls, tenant operations</div>
+        </div>
+      </section>
+
+      <section class="install-demo fade-up delay-2">
+        <div>
+          <span class="demo-label">Instrument in minutes</span>
+          <h3>Show teams how little code it takes.</h3>
+          <p>Add the ingest SDK, pass its tracked fetch into the client you already use, and start emitting usage events before you wire up any vendor reconciliation.</p>
+          <div class="demo-steps">
+            <div class="demo-step"><strong>1.</strong> Install <code>@outlayo/sdk-ingest</code> and add the OpenAI preset.</div>
+            <div class="demo-step"><strong>2.</strong> Hand Outlayo's tracked <code>fetch</code> to your OpenAI client.</div>
+            <div class="demo-step"><strong>3.</strong> Emit usage events to your Outlayo collector while connector reconciliation catches up later.</div>
+          </div>
+        </div>
+        <div class="demo-code">
+          <span class="demo-label">Example</span>
+          <pre><code>{instrumentationSnippet}</code></pre>
+        </div>
+      </section>
+
+      <section class="final-cta fade-up delay-2">
+        <div>
+          <h4>Instrument one costly workflow this week.</h4>
+          <p>Start with app-side interception, then layer in connector reconciliation where vendor telemetry is strong.</p>
+        </div>
+        <a href="mailto:founders@outlayo.com?subject=Outlayo%20early%20access" class="cta-btn primary">Request early access</a>
+      </section>
+
+      <footer class="footer-note">Built from the public repo. Updated at build time: {generatedAt}. Outlayo is currently in early access.</footer>
+    </main>
+  </body>
+</html>

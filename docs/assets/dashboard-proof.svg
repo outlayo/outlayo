@@ -1,0 +1,45 @@
+<svg width="1280" height="860" viewBox="0 0 1280 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="860" fill="#F8FAFC"/>
+  <text x="56" y="62" fill="#0F766E" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="2">OUTLAYO COST PULSE</text>
+  <text x="56" y="106" fill="#12263A" font-family="Arial, sans-serif" font-size="42" font-weight="700">Spend dashboard</text>
+  <text x="56" y="136" fill="#64748B" font-family="Arial, sans-serif" font-size="18">Live usage + spend with confidence labels across estimated, authoritative, and reconciled events.</text>
+
+  <rect x="56" y="170" width="368" height="132" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="84" y="210" fill="#64748B" font-family="Arial, sans-serif" font-size="18">MTD Spend</text>
+  <text x="84" y="266" fill="#0F172A" font-family="Arial, sans-serif" font-size="54" font-weight="700">$5.26</text>
+
+  <rect x="456" y="170" width="368" height="132" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="484" y="210" fill="#64748B" font-family="Arial, sans-serif" font-size="18">Projected Month-End</text>
+  <text x="484" y="266" fill="#0F766E" font-family="Arial, sans-serif" font-size="54" font-weight="700">$23.29</text>
+  <text x="484" y="292" fill="#64748B" font-family="Arial, sans-serif" font-size="16">MTD line: $10.87  confidence: low</text>
+
+  <rect x="856" y="170" width="368" height="132" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="884" y="210" fill="#64748B" font-family="Arial, sans-serif" font-size="18">Top vendors</text>
+  <text x="884" y="244" fill="#0F172A" font-family="Arial, sans-serif" font-size="20" font-weight="700">openai  $3.55</text>
+  <text x="884" y="272" fill="#0F172A" font-family="Arial, sans-serif" font-size="20" font-weight="700">cloudflare  $1.22</text>
+  <text x="884" y="300" fill="#0F172A" font-family="Arial, sans-serif" font-size="20" font-weight="700">supabase  $0.49</text>
+
+  <rect x="56" y="330" width="792" height="256" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="88" y="372" fill="#0F172A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Daily spend (stacked by vendor)</text>
+  <rect x="88" y="396" width="126" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0"/><text x="104" y="416" fill="#0F172A" font-family="Arial, sans-serif" font-size="14" font-weight="700">7d spend</text><text x="171" y="416" fill="#475569" font-family="Arial, sans-serif" font-size="14">$5.26</text>
+  <rect x="226" y="396" width="170" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0"/><text x="242" y="416" fill="#0F172A" font-family="Arial, sans-serif" font-size="14" font-weight="700">Top vendor</text><text x="317" y="416" fill="#475569" font-family="Arial, sans-serif" font-size="14">openai $3.55</text>
+  <rect x="408" y="396" width="248" height="30" rx="15" fill="#FFFFFF" stroke="#E2E8F0"/><text x="424" y="416" fill="#0F172A" font-family="Arial, sans-serif" font-size="14" font-weight="700">Last successful sync</text><text x="548" y="416" fill="#475569" font-family="Arial, sans-serif" font-size="14">2026-03-15 04:23 UTC</text>
+  <text x="88" y="466" fill="#334155" font-family="Arial, sans-serif" font-size="16">2026-03-10</text><text x="742" y="466" fill="#0F172A" font-family="Arial, sans-serif" font-size="16" font-weight="700">$3.54</text>
+  <rect x="88" y="482" width="680" height="14" rx="7" fill="#CBD5E1"/><rect x="88" y="482" width="680" height="14" rx="7" fill="#F59E0B"/>
+  <text x="88" y="530" fill="#334155" font-family="Arial, sans-serif" font-size="16">2026-03-11</text><text x="742" y="530" fill="#0F172A" font-family="Arial, sans-serif" font-size="16" font-weight="700">$1.22</text>
+  <rect x="88" y="546" width="680" height="14" rx="7" fill="#CBD5E1"/><rect x="88" y="546" width="232" height="14" rx="7" fill="#06B6D4"/>
+
+  <rect x="872" y="330" width="352" height="256" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="904" y="372" fill="#0F172A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Confidence and reconciliation</text>
+  <text x="904" y="420" fill="#334155" font-family="Arial, sans-serif" font-size="18">estimated</text><text x="1110" y="420" fill="#334155" font-family="Arial, sans-serif" font-size="18">15 events</text><text x="1178" y="420" fill="#0F172A" font-family="Arial, sans-serif" font-size="18" font-weight="700">$2.67</text>
+  <text x="904" y="458" fill="#334155" font-family="Arial, sans-serif" font-size="18">authoritative</text><text x="1110" y="458" fill="#334155" font-family="Arial, sans-serif" font-size="18">3 events</text><text x="1178" y="458" fill="#0F172A" font-family="Arial, sans-serif" font-size="18" font-weight="700">$2.34</text>
+  <text x="904" y="496" fill="#334155" font-family="Arial, sans-serif" font-size="18">reconciled</text><text x="1110" y="496" fill="#334155" font-family="Arial, sans-serif" font-size="18">1 event</text><text x="1178" y="496" fill="#0F172A" font-family="Arial, sans-serif" font-size="18" font-weight="700">$0.25</text>
+  <text x="904" y="552" fill="#64748B" font-family="Arial, sans-serif" font-size="16">Example view seeded from a local app run with app-side ingest</text>
+  <text x="904" y="576" fill="#64748B" font-family="Arial, sans-serif" font-size="16">plus connector-style authoritative and reconciled events.</text>
+
+  <rect x="56" y="616" width="1168" height="180" rx="24" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="88" y="658" fill="#0F172A" font-family="Arial, sans-serif" font-size="28" font-weight="700">Usage (all vendors)</text>
+  <text x="88" y="702" fill="#334155" font-family="Arial, sans-serif" font-size="18">openai   tokens.total   12,000</text>
+  <text x="88" y="734" fill="#334155" font-family="Arial, sans-serif" font-size="18">cloudflare   requests   300,000</text>
+  <text x="88" y="766" fill="#334155" font-family="Arial, sans-serif" font-size="18">supabase   rows_read   820,000</text>
+</svg>

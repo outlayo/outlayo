@@ -1,0 +1,36 @@
+services:
+  outlayo:
+    build: .
+    ports:
+      - "8787:8787"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8787
+      ADMIN_TOKEN: change-me
+      ADMIN_HEADER_NAME: x-outlayo-admin-token
+      DB_BACKEND: sqlite
+      SQLITE_PATH: /data/outlayo.db
+      POLL_INTERVAL_MINUTES: 10
+      OPENAI_ENABLED: "true"
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_PROJECT: ${OPENAI_PROJECT:-}
+      GCP_ENABLED: ${GCP_ENABLED:-false}
+      GCP_PROJECT_ID: ${GCP_PROJECT_ID:-}
+      GCP_BILLING_DATASET: ${GCP_BILLING_DATASET:-}
+      GCP_BILLING_TABLE: ${GCP_BILLING_TABLE:-}
+      GCP_SERVICE_ACCOUNT_FILE: ${GCP_SERVICE_ACCOUNT_FILE:-}
+      GCP_SERVICE_ACCOUNT_JSON: ${GCP_SERVICE_ACCOUNT_JSON:-}
+      GCP_API_USAGE_ENABLED: ${GCP_API_USAGE_ENABLED:-false}
+      GCP_FREE_TIER_LIMITS_JSON: ${GCP_FREE_TIER_LIMITS_JSON:-}
+      MAPBOX_ENABLED: ${MAPBOX_ENABLED:-false}
+      MAPBOX_TOKEN: ${MAPBOX_TOKEN:-}
+      MAPBOX_USERNAME: ${MAPBOX_USERNAME:-mapbox}
+      MAPBOX_PRICING_JSON: ${MAPBOX_PRICING_JSON:-}
+      MONTHLY_BUDGET_USD: ${MONTHLY_BUDGET_USD:-}
+      ALERT_WEBHOOK_URL: ${ALERT_WEBHOOK_URL:-}
+      ALERT_COOLDOWN_HOURS: ${ALERT_COOLDOWN_HOURS:-24}
+    volumes:
+      - outlayo-data:/data
+
+volumes:
+  outlayo-data:

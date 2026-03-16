@@ -1,0 +1,24 @@
+{
+  "name": "@outlayo/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@outlayo/core": "file:../../packages/core",
+    "@outlayo/forecaster": "file:../../packages/forecaster",
+    "@outlayo/store-sqlite": "file:../../packages/store-sqlite",
+    "@outlayo/store-postgres": "file:../../packages/store-postgres",
+    "@outlayo/connector-openai": "file:../../packages/connector-openai",
+    "@outlayo/connector-anthropic": "file:../../packages/connector-anthropic",
+    "@outlayo/connector-gcp-billing": "file:../../packages/connector-gcp-billing",
+    "@outlayo/connector-gcp-api-usage": "file:../../packages/connector-gcp-api-usage",
+    "@outlayo/connector-mapbox": "file:../../packages/connector-mapbox",
+    "@outlayo/connector-aws-cost-explorer": "file:../../packages/connector-aws-cost-explorer",
+    "@outlayo/connector-azure-consumption": "file:../../packages/connector-azure-consumption",
+    "@outlayo/connector-supabase": "file:../../packages/connector-supabase",
+    "@outlayo/connector-vercel": "file:../../packages/connector-vercel",
+    "@outlayo/connector-render": "file:../../packages/connector-render",
+    "@outlayo/connector-railway": "file:../../packages/connector-railway",
+    "@outlayo/connector-cloudflare": "file:../../packages/connector-cloudflare"
+  }
+}

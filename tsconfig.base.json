@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@outlayo/core": ["packages/core/src/index.ts"],
+      "@outlayo/forecaster": ["packages/forecaster/src/index.ts"],
+      "@outlayo/store-sqlite": ["packages/store-sqlite/src/index.ts"],
+      "@outlayo/store-postgres": ["packages/store-postgres/src/index.ts"],
+      "@outlayo/connector-openai": ["packages/connector-openai/src/index.ts"],
+      "@outlayo/connector-anthropic": ["packages/connector-anthropic/src/index.ts"],
+      "@outlayo/connector-aws-cost-explorer": ["packages/connector-aws-cost-explorer/src/index.ts"],
+      "@outlayo/connector-azure-consumption": ["packages/connector-azure-consumption/src/index.ts"],
+      "@outlayo/connector-gcp-billing": ["packages/connector-gcp-billing/src/index.ts"],
+      "@outlayo/connector-gcp-api-usage": ["packages/connector-gcp-api-usage/src/index.ts"],
+      "@outlayo/connector-supabase": ["packages/connector-supabase/src/index.ts"],
+      "@outlayo/connector-vercel": ["packages/connector-vercel/src/index.ts"],
+      "@outlayo/connector-render": ["packages/connector-render/src/index.ts"],
+      "@outlayo/connector-railway": ["packages/connector-railway/src/index.ts"],
+      "@outlayo/connector-cloudflare": ["packages/connector-cloudflare/src/index.ts"],
+      "@outlayo/sdk-ingest": ["packages/sdk-ingest/src/index.ts"]
+    }
+  }
+}
