@@ -33,7 +33,7 @@ OUTLAYO_EXPECTED_COMMIT=<git-commit-sha> ./install.sh
 ## Installer behavior
 
 - clones or updates Outlayo source under `~/.outlayo` (override with `OUTLAYO_HOME`)
-- installs dependencies with pnpm
+- installs dependencies with npm
 - creates `outlayo` shim in `~/.local/bin` (override with `OUTLAYO_BIN_DIR`)
 
 ## Environment overrides

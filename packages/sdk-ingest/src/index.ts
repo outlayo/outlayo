@@ -1,4 +1,20 @@
-import type { IngestBatchInput, IngestEventInput } from "@outlayo/core";
+export type ConfidenceLabel = "authoritative" | "estimated" | "reconciled";
+
+export interface IngestEventInput {
+  ts: string;
+  vendor: string;
+  service: string;
+  metric: string;
+  quantity: number;
+  cost_usd: number;
+  source_ref: string;
+  confidence?: ConfidenceLabel;
+  meta?: Record<string, unknown>;
+}
+
+export interface IngestBatchInput {
+  events: IngestEventInput[];
+}
 
 export interface OutlayoIngestClientOptions {
   endpoint: string;

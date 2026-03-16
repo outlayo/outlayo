@@ -41,5 +41,19 @@
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "vitest": "^3.0.8"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/outlayo/outlayo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/outlayo/outlayo/issues"
+  },
+  "homepage": "https://github.com/outlayo/outlayo#readme"
 }
